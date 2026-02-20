@@ -1,0 +1,9 @@
+aiohttp
+python-decouple
+psutil
+speedtest-cli
+FastAPI 
+uvicorn
+telethon==1.42.0
+html_telegraph_poster
+lxml_html_clean
