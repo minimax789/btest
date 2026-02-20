@@ -5,7 +5,7 @@ from urllib.parse import unquote
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal, sys, platform, sysconfig, math, time
-from bot import ffmpegcode, LOG_FILE_NAME
+from bot import SvtHevcEncAppcode, LOG_FILE_NAME
 from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 from datetime import datetime as dt
 import aiohttp, asyncio
@@ -136,7 +136,7 @@ async def skip(e):
         os.system("rm -rf downloads/*")
         os.system("rm -rf encode/*")
         for proc in psutil.process_iter():
-            if proc.name() == "ffmpeg":
+            if proc.name() == "SvtHevcEncApp":
                 proc.kill()
     except BaseException:
         pass
@@ -151,17 +151,17 @@ async def renew(e):
     os.system("rm -rf downloads/*")
     os.system("rm -rf encode/*")
     for proc in psutil.process_iter():
-        if proc.name() == "ffmpeg":
+        if proc.name() == "SvtHevcEncApp":
             proc.kill()
     return
 
 async def coding(e):
     if str(e.sender_id) not in OWNER and e.sender_id != DEV:
         return
-    ffmpeg = e.text.split(" ", maxsplit=1)[1]
-    ffmpegcode.clear()
-    ffmpegcode.insert(0, f"{ffmpeg}")
-    await e.reply(f"**Changed FFMPEG Code to**\n\n`{ffmpeg}`")
+    SvtHevcEncApp = e.text.split(" ", maxsplit=1)[1]
+    SvtHevcEncAppcode.clear()
+    SvtHevcEncAppcode.insert(0, f"{SvtHevcEncApp}")
+    await e.reply(f"**Changed SvtHevcEncApp Code to**\n\n`{SvtHevcEncApp}`")
     return
 
 async def getlogs(e):
@@ -177,7 +177,7 @@ async def getthumb(e):
 async def getcode(e):
     if str(e.sender_id) not in OWNER and e.sender_id != DEV:
         return
-    await e.reply(f"**Your Current FFMPEG Code is**\n\n`{ffmpegcode[0]}`")
+    await e.reply(f"**Your Current SvtHevcEncApp Code is**\n\n`{SvtHevcEncAppcode[0]}`")
     return
 
 async def clearqueue(e):
