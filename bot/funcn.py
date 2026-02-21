@@ -5,7 +5,6 @@ from urllib.parse import unquote
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 import psutil, os, signal, sys, platform, sysconfig, math, time
-from bot import SvtHevcEncApp_code, LOG_FILE_NAME
 from psutil import disk_usage, cpu_percent, virtual_memory, Process as psprocess
 from datetime import datetime as dt
 import aiohttp, asyncio
